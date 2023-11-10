@@ -7,7 +7,7 @@
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <title>Template</title>
 
-   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+   {{-- <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet"> --}}
 
    <!-- inject:css-->
 

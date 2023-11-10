@@ -45,7 +45,7 @@
                             </div>
                             <div>
                                <h6>Md. Kamrul Hasan</h6>
-                               <span>UI Designer</span>
+                               <span>Software Engineer</span>
                             </div>
                          </div>
                          <div class="nav-author__options">
