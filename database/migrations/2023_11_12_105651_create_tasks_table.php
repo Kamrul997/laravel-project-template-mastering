@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('assign_to');
             $table->string('assign_date');
             $table->string('status');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
