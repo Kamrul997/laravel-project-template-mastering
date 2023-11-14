@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
+use Illuminate\Routing\RouteGroup;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,12 +18,28 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::group(['middleware' => 'auth'], function () {
 
-Route::get('/users', [UserController::class, 'index'])->name('user.index');
-Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit');
-Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
+    Route::get('/', [TaskController::class, 'index'])->name('dashboard');
+});
+    Route::get('/users', [UserController::class, 'index'])->name('user.index');
+    Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit');
+    Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
 
-Route::get('/', [TaskController::class, 'index'])->name('task.home');
-Route::get('/tasks', [TaskController::class, 'index'])->name('task.index');
-Route::get('/task/create', [TaskController::class, 'create'])->name('task.create');
-Route::get('/task/edit', [TaskController::class, 'edit'])->name('task.edit');
+    Route::get('/tasks', [TaskController::class, 'index'])->name('task.index');
+    Route::get('/task/create', [TaskController::class, 'create'])->name('task.create');
+    Route::get('/task/edit/{taskId}', [TaskController::class, 'edit'])->name('task.edit');
+    Route::post('/task/update', [TaskController::class, 'update'])->name('task.update');
+    Route::post('/task/store', [TaskController::class, 'store'])->name('task.store');
+
+
+
+
+// Route::get('/login', [HomeController::class, 'loginPage'])->name('login.show');
+// Route::get('/register', [HomeController::class, 'registerPage'])->name('register.show');
+
+
+
+Auth::routes();
+
+Route::get('/test', [HomeController::class, 'index'])->name('home');

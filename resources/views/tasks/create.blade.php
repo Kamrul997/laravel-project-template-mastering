@@ -24,28 +24,43 @@
                 <div class="col-md-5 col-10">
                     <div class="mt-40 mb-50">
                         <div class="edit-profile__body">
-                            <form>
+
+                            <form  method="post" action="{{ route('task.store') }}">
+                                @csrf
+
+
                                 <div class="form-group mb-25">
                                     <label for="taskName">name</label>
-                                    <input type="text" class="form-control" id="taskName" placeholder="Duran Clayton">
+                                    <input type="text" class="form-control" name="taskName" id="taskName" value="{{ old('taskName') }}">
+                                    @error('taskName')
+                                        <p><span><small class="text-danger">{{ $message }}</small></span></p>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group mb-25">
                                     <label for="name3">Task Details</label>
-                                    <input type="text" class="form-control" id="taskDetails" placeholder="Example">
+                                    <input type="text" class="form-control" value="{{ old('taskDetails') }}" name="taskDetails" id="taskDetails">
+                                    @error('taskDetails')
+                                        <p><span><small class="text-danger">{{ $message }}</small></span></p>
+                                    @enderror
                                 </div>
                                 <div class="form-group mb-25">
                                     <label for="taskAddignTo">Assign To</label>
-                                    <input type="text" class="form-control" id="taskAddignTo"
-                                        placeholder="duran clayton">
+                                    <input type="text" class="form-control" value="{{ old('taskAddignTo') }}" name="taskAddignTo" id="taskAddignTo"
+                                        >
+                                    @error('taskAddignTo')
+                                        <p><span><small class="text-danger">{{ $message }}</small></span></p>
+                                    @enderror
                                 </div>
                                 <div class="form-group mb-25 form-group-calender">
                                     <label for="assignDate">Assign Date</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" id="assignDate"
-                                            placeholder="Select date">
-                                        <a href="#"><img class="svg" src="{{ asset('img/svg/calendar.svg') }}"
-                                                alt="calendar"></a>
+                                        <input type="date" class="form-control" value="{{ old('assignDate') }}" name="assignDate" id="assignDate"
+                                           >
+
+                                        @error('assignDate')
+                                            <p><span><small class="text-danger">{{ $message }}</small></span></p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group mb-25 status-radio">
@@ -53,21 +68,23 @@
                                     <div class="d-flex">
                                         <div class="radio-horizontal-list d-flex flex-wrap">
                                             <div class="radio-theme-default custom-radio ">
-                                                <input class="radio" type="radio" name="radio-optional" value=0
-                                                    id="taskStatusOngoing">
-                                                <label for="taskStatusOngoing">
-                                                    <span class="radio-text">on going</span>
+                                                <input name="status" class="radio" type="radio" value="taskStatusIncomplete"
+                                                    id="taskStatusIncomplete" {{ old("status") == 'taskStatusIncomplete' ? 'checked' : '' }}>
+                                                <label for="taskStatusIncomplete">
+                                                    <span class="radio-text">Incomplete</span>
                                                 </label>
                                             </div>
 
                                             <div class="radio-theme-default custom-radio ">
-                                                <input class="radio" type="radio" name="radio-optional" value=0
-                                                    id="taskStatusComplete">
+                                                <input name="status" class="radio" type="radio" value="taskStatusComplete"
+                                                    id="taskStatusComplete" {{ old("status") == 'taskStatusComplete' ? 'checked' : '' }}>
                                                 <label for="taskStatusComplete">
                                                     <span class="radio-text">complete</span>
                                                 </label>
                                             </div>
-
+                                            @error('status')
+                                                <p><span><small class="text-danger">{{ $message }}</small></span></p>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>

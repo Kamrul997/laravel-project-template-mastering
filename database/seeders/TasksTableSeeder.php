@@ -19,11 +19,11 @@ class TasksTableSeeder extends Seeder
         // Generate and insert sample data
         for ($i = 1; $i <= 10; $i++) {
             DB::table('tasks')->insert([
-                'name' => $faker->sentence,
-                'details' => $faker->paragraph,
+                'name' => $faker->name,
+                'details' => $faker->sentence,
                 'assign_to' => $faker->name,
-                'assign_date' => $faker->dateTimeBetween('-1 month', 'now'),
-                'status' => $faker->randomElement(['On Going', 'Completed']),
+                'assign_date' => $faker->date(),
+                'status' => $faker->randomElement(['Incomplete', 'Complete']),
             ]);
         }
     }

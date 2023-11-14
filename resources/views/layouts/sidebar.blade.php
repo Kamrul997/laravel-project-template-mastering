@@ -3,7 +3,7 @@
         <div class="sidebar__menu-group">
             <ul class="sidebar_nav">
                 <li class="open">
-                    <a href="{{ route('task.home') }}" class="active">
+                    <a href="{{ route('dashboard') }}" class="active">
                         <span class="nav-icon uil uil-create-dashboard"></span>
                         <span class="menu-text">Dashboard</span>
                         {{-- <span class="toggle-icon"></span> --}}

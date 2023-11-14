@@ -100,7 +100,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('task.edit') }}" class="edit">
+                                            <a href="{{ route('task.edit', $task->id) }}" class="edit">
                                                 <i class="uil uil-edit"></i>
                                             </a>
                                         </li>
