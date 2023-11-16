@@ -32,6 +32,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/task/update', [TaskController::class, 'update'])->name('task.update');
     Route::post('/task/store', [TaskController::class, 'store'])->name('task.store');
 
+    // Route::get('/logout', [AuthenticationController::class, 'logout'])->name('user.logout');
+    // Route::post('/login', [AuthenticationController::class, 'authenticate'])->name('user.login');
+    // Route::post('/login', [AuthenticationController::class, 'login'])->name('user.login.page');
+
 
 
 
@@ -42,4 +46,4 @@ Route::group(['middleware' => 'auth'], function () {
 
 Auth::routes();
 
-Route::get('/test', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');

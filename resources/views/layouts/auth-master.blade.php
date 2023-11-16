@@ -55,30 +55,15 @@
 
 </head>
 
-<body class="layout-light side-menu">
+<body>
 
-    @include('layouts.headerTopmenu')
     <main class="main-content">
 
-        @include('layouts.sidebar')
-
-
-
-        <div class="contents">
-
-
-            <div class="crm mb-25">
-                <div class="container-fluid">
-                    <div class="row ">
+        <div class="admin">
+           <div class="container-fluid">
                         @yield('content')
-                    </div>
-                    <!-- ends: .row -->
                 </div>
             </div>
-
-        </div>
-
-        @include('layouts.footer')
 
     </main>
     {{-- <div id="overlayer">
