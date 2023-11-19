@@ -18,10 +18,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', [TaskController::class, 'index'])->name('dashboard');
-});
     Route::get('/users', [UserController::class, 'index'])->name('user.index');
     Route::get('/user/edit/{userId}', [UserController::class, 'edit'])->name('user.edit');
     Route::get('/user/delete/{userId}', [UserController::class, 'delete'])->name('user.delete');
@@ -35,19 +36,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/task/delete/{taskId}', [TaskController::class, 'delete'])->name('task.delete');
     Route::post('/task/update', [TaskController::class, 'update'])->name('task.update');
     Route::post('/task/store', [TaskController::class, 'store'])->name('task.store');
+});
 
-    // Route::get('/logout', [AuthenticationController::class, 'logout'])->name('user.logout');
-    // Route::post('/login', [AuthenticationController::class, 'authenticate'])->name('user.login');
-    // Route::post('/login', [AuthenticationController::class, 'login'])->name('user.login.page');
-
-
-
-
-// Route::get('/login', [HomeController::class, 'loginPage'])->name('login.show');
-// Route::get('/register', [HomeController::class, 'registerPage'])->name('register.show');
-
-
-
-Auth::routes();
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Route::get('/home', [HomeController::class, 'index'])->name('home');

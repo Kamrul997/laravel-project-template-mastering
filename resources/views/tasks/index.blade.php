@@ -8,7 +8,7 @@
                 <div class="d-flex align-items-center user-member__title">
                     <h4 class="text-capitalize">Task Table</h4>
                 </div>
-                <div class="action-btn">
+                <div class="action-btn {{ Auth::user()->user_type === 'super admin' || Auth::user()->user_type === 'admin' ? '' : 'd-none' }}">
                     <a href="{{ route('task.create') }}" class="btn btn-primary">
                         Add New
                     </a>

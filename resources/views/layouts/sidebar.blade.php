@@ -9,7 +9,7 @@
                         {{-- <span class="toggle-icon"></span> --}}
                     </a>
                 </li>
-                <li class="">
+                <li class="{{ Auth::user()->user_type === 'super admin' || Auth::user()->user_type === 'admin' ? '' : 'd-none'}}">
                     <a href="{{ route('user.index') }}">
                         <span class="nav-icon uil uil-user"></span>
                         <span class="menu-text">User</span>

@@ -23,7 +23,7 @@ class TasksTableSeeder extends Seeder
                 'details' => $faker->sentence,
                 'assign_to' => $faker->name,
                 'assign_date' => $faker->date(),
-                'status' => $faker->randomElement(['Incomplete', 'Complete']),
+                'status' => $faker->randomElement(['incomplete', 'complete']),
             ]);
         }
     }

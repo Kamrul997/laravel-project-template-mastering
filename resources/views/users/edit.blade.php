@@ -44,7 +44,7 @@
                                             <select class="form-control px-15" name="user_type" id="user_type">
                                                 <option value="">Select User Type</option>
                                                 <option value="admin" {{ $user->user_type === 'admin' ? 'selected': '' }}>Admin</option>
-                                                <option value="guest" {{ $user->user_type === 'guest' ? 'selected': '' }}>Guest</option>
+                                                <option value="guest" {{ $user->user_type === 'user' ? 'selected': '' }}>User</option>
                                             </select>
                                          </div>
                                         {{-- <div class="admin-condition">
