@@ -118,6 +118,16 @@
                                                 </div>
                                             </div>
                                             <div class="form-group mb-15">
+                                                <label for="password-field">Select User Type</label>
+                                                <div class="position-relative">
+                                                    <input id="user_type" type="text" class="form-control @error('password') is-invalid @enderror" name="user_type" required>
+
+                                                    <div
+                                                        class="uil uil-eye-slash text-lighten fs-15 field-icon toggle-password2">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-15">
                                                 <label for="password-field">Confirm password</label>
                                                 <div class="position-relative">
                                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">

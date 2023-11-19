@@ -7,131 +7,88 @@
                 <div class="breadcrumb-main breadcrumb-main--table justify-content-sm-between ">
                     <div class=" d-flex flex-wrap justify-content-center breadcrumb-main__wrapper">
                         <div class="d-flex align-items-center user-member__title">
-                            <h4 class="text-capitalize">add new user</h4>
+                            <h4 class="text-capitalize">add new User</h4>
                         </div>
                     </div>
                     <div class="action-btn">
-                        <a href="{{ route('user.index') }}" class="btn btn-primary">
+                        <a href="{{ route('task.index') }}" class="btn btn-primary">
                             Go Back
                         </a>
                     </div>
                 </div>
-
-
             </div>
         </div>
+
         <div class="card mb-50">
             <div class="row justify-content-center">
                 <div class="col-md-5 col-10">
                     <div class="mt-40 mb-50">
-                        <div class="account-profile d-flex align-items-center mb-4 ">
-                            <div class="ap-img pro_img_wrapper">
-                                <input id="file-upload" type="file" name="fileUpload" class="d-none">
-                                <!-- Profile picture image-->
-                                <label for="file-upload">
-                                    <img class="ap-img__main rounded-circle wh-120 bg-lighter d-flex"
-                                        src="https://placehold.co/120x120" alt="profile">
-                                    <span class="cross" id="remove_pro_pic">
-                                        {{-- <img src="img/svg/camera.svg" alt="camera" class="svg"> --}}
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="account-profile__title">
-                                <h6 class="fs-15 ms-20 fw-500 text-capitalize">profile photo</h6>
-                            </div>
-                        </div>
                         <div class="edit-profile__body">
-                            <form>
+
+                            {{-- <form method="post" action="{{ route('task.store') }}">
+                                @csrf
+
+
                                 <div class="form-group mb-25">
-                                    <label for="name1">name</label>
-                                    <input type="text" class="form-control" id="name1" placeholder="Duran Clayton">
+                                    <label for="taskName">name</label>
+                                    <input type="text" class="form-control" name="taskName" id="taskName"
+                                        value="{{ old('taskName') }}">
+                                    @error('taskName')
+                                        <p><span><small class="text-danger">{{ $message }}</small></span></p>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group mb-25">
+                                    <label for="name3">Task Details</label>
+                                    <input type="text" class="form-control" value="{{ old('taskDetails') }}"
+                                        name="taskDetails" id="taskDetails">
+                                    @error('taskDetails')
+                                        <p><span><small class="text-danger">{{ $message }}</small></span></p>
+                                    @enderror
                                 </div>
                                 <div class="form-group mb-25">
-                                    <label for="name2">Email</label>
-                                    <input type="email" class="form-control" id="name2"
-                                        placeholder="sample@email.com">
-                                </div>
-                                <div class="form-group mb-25">
-                                    <label for="phoneNumber5">phone number</label>
-                                    <input type="tel" class="form-control" id="phoneNumber5"
-                                        placeholder="+440 2546 5236">
-                                </div>
-                                <div class="form-group mb-25">
-                                    <div class="countryOption">
-                                        <label for="countryOption">
-                                            country
-                                        </label>
-                                        <select class="js-example-basic-single js-states form-control" id="countryOption">
-                                            <option value="JAN">event</option>
-                                            <option value="FBR">Venues</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-25">
-                                    <div class="cityOption">
-                                        <label for="cityOption">
-                                            city
-                                        </label>
-                                        <select class="js-example-basic-single js-states form-control" id="cityOption">
-                                            <option value="JAN">event</option>
-                                            <option value="FBR">Venues</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-25">
-                                    <label for="name3">company name</label>
-                                    <input type="text" class="form-control" id="name3" placeholder="Example">
-                                </div>
-                                <div class="form-group mb-25">
-                                    <label for="phoneNumber2">Position</label>
-                                    <input type="text" class="form-control" id="phoneNumber2" placeholder="Position">
-                                </div>
+                                    <label for="taskAddignTo" class="il-gray fs-14 fw-500 align-center mb-10">User Type</label>
+                                    <select class="form-control px-15" id="taskAddignTo">
+                                        <option value="0">Select User Type</option>
+                                        <option value="admin">Admin</option>
+                                        <option value="guest">Guest</option>
+                                    </select>
+                                 </div>
                                 <div class="form-group mb-25 form-group-calender">
-                                    <label for="datepicker">Joining Date</label>
+                                    <label for="assignDate">Assign Date</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control" id="datepicker"
-                                            placeholder="Select date">
-                                        <a href="#"><img class="svg" src="{{ asset('img/svg/calendar.svg') }}"
-                                                alt="calendar"></a>
+                                        <input type="date" class="form-control" value="{{ old('assignDate') }}"
+                                            name="assignDate" id="assignDate">
+
+                                        @error('assignDate')
+                                            <p><span><small class="text-danger">{{ $message }}</small></span></p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group mb-25 status-radio">
-                                    <label class="mb-15" for="phoneNumber2">status</label>
+                                    <label class="mb-15" for="taskStatus">status</label>
                                     <div class="d-flex">
                                         <div class="radio-horizontal-list d-flex flex-wrap">
-
-
                                             <div class="radio-theme-default custom-radio ">
-                                                <input class="radio" type="radio" name="radio-optional" value=0
-                                                    id="radio-hl1">
-                                                <label for="radio-hl1">
-                                                    <span class="radio-text">status</span>
+                                                <input name="status" class="radio" type="radio"
+                                                    value="taskStatusIncomplete" id="taskStatusIncomplete"
+                                                    {{ old('status') == 'taskStatusIncomplete' ? 'checked' : '' }}>
+                                                <label for="taskStatusIncomplete">
+                                                    <span class="radio-text">Incomplete</span>
                                                 </label>
                                             </div>
 
-
-
-
                                             <div class="radio-theme-default custom-radio ">
-                                                <input class="radio" type="radio" name="radio-optional" value=0
-                                                    id="radio-hl2">
-                                                <label for="radio-hl2">
-                                                    <span class="radio-text">Deactivated</span>
+                                                <input name="status" class="radio" type="radio"
+                                                    value="taskStatusComplete" id="taskStatusComplete"
+                                                    {{ old('status') == 'taskStatusComplete' ? 'checked' : '' }}>
+                                                <label for="taskStatusComplete">
+                                                    <span class="radio-text">complete</span>
                                                 </label>
                                             </div>
-
-
-
-
-                                            <div class="radio-theme-default custom-radio ">
-                                                <input class="radio" type="radio" name="radio-optional" value=0
-                                                    id="radio-hl3">
-                                                <label for="radio-hl3">
-                                                    <span class="radio-text">bloked</span>
-                                                </label>
-                                            </div>
-
-
+                                            @error('status')
+                                                <p><span><small class="text-danger">{{ $message }}</small></span></p>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -146,6 +103,69 @@
 
 
 
+                                </div>
+                            </form> --}}
+
+                            <form method="POST" action="{{ route('user.store') }}">
+                                @csrf
+                                <div class="edit-profile__body">
+                                    <div class="edit-profile__body">
+                                        <div class="form-group mb-20">
+                                            <label for="name">name</label>
+                                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                        </div>
+                                        <div class="form-group mb-20">
+                                            <label for="email">Email Adress</label>
+                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                        </div>
+                                        <div class="form-group mb-15">
+                                            <label for="password-field">password</label>
+                                            <div class="position-relative">
+                                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                                <div
+                                                    class="uil uil-eye-slash text-lighten fs-15 field-icon toggle-password2">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-15">
+                                            <label for="password-field">Confirm password</label>
+                                            <div class="position-relative">
+                                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                                <div
+                                                    class="uil uil-eye-slash text-lighten fs-15 field-icon toggle-password2">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-25">
+                                            <label for="user_type" class="il-gray fs-14 fw-500 align-center mb-10">User Type</label>
+                                            <select class="form-control px-15" name="user_type" id="user_type">
+                                                <option value="0">Select User Type</option>
+                                                <option value="admin">Admin</option>
+                                                <option value="guest">Guest</option>
+                                            </select>
+                                         </div>
+                                        {{-- <div class="admin-condition">
+                                            <div class="checkbox-theme-default custom-checkbox ">
+                                                <input class="checkbox" type="checkbox" id="admin-1">
+                                                <label for="admin-1">
+                                                    <span class="checkbox-text">Creating an account means you’re okay
+                                                        with our <a href="#" class="color-primary">Terms of
+                                                            Service</a> and <a href="#"
+                                                            class="color-primary">Privacy
+                                                            Policy</a>
+                                                        my preference</span>
+                                                </label>
+                                            </div>
+                                        </div> --}}
+                                        <div
+                                            class="admin__button-group button-group d-flex pt-1 justify-content-md-start justify-content-center">
+                                            <button type="submit"
+                                                class="btn btn-primary btn-default w-100 btn-squared text-capitalize lh-normal px-50 signIn-createBtn ">
+                                                Create User
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </form>
                         </div>

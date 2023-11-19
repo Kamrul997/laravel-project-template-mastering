@@ -24,33 +24,35 @@
                 <div class="col-md-5 col-10">
                     <div class="mt-40 mb-50">
                         <div class="edit-profile__body">
-                            <form action="post" method="{{ route('task.update') }}">
+                            <form method="post" action="{{ route('task.update') }}">
+                                @csrf
                                 <div class="form-group mb-25">
-                                    <input type="text" class="form-control" value="{{ $task->id }}" id="taskId"
+                                    <input type="text" class="form-control" value="{{ $task->id }}" name="taskId" id="taskId"
                                         hidden>
                                 </div>
                                 <div class="form-group mb-25">
                                     <label for="taskName">name</label>
-                                    <input type="text" class="form-control" id="taskName" value="{{ $task->name }}">
+                                    <input type="text" class="form-control" id="taskName" name="taskName" value="{{ $task->name }}">
                                 </div>
 
                                 <div class="form-group mb-25">
                                     <label for="name3">Task Details</label>
-                                    <input type="text" class="form-control" id="taskDetails"
+                                    <input type="text" class="form-control" name="taskDetails" id="taskDetails"
                                         value="{{ $task->details }}">
                                 </div>
                                 <div class="form-group mb-25">
                                     <label for="taskAddignTo">Assign To</label>
-                                    <input type="text" class="form-control" id="taskAddignTo"
-                                        value="{{ $task->assign_to }}">
+                                    <select class="form-control px-15" name="taskAssignTo" id="taskAssignTo">
+                                        @foreach ($users as $user)
+                                            <option value="{{ $user->name }}">{{ $user->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group mb-25 form-group-calender">
                                     <label for="assignDate">Assign Date</label>
                                     <div class="position-relative">
-                                        <input type="date" class="form-control" id="assignDate"
+                                        <input type="date" class="form-control" name="assignDate" id="assignDate"
                                             value="{{ $task->assign_date }}">
-                                        {{-- <a href="#"><img class="svg" src="{{ asset('img/svg/calendar.svg') }}"
-                                                alt="calendar"></a> --}}
                                     </div>
                                 </div>
                                 <div class="form-group mb-25 status-radio">
@@ -59,18 +61,18 @@
                                         <div class="radio-horizontal-list d-flex flex-wrap">
                                             <div class="radio-theme-default custom-radio ">
                                                 <input name="status" class="radio" type="radio"
-                                                    value="taskStatusIncomplete" id="taskStatusIncomplete"
-                                                    {{ $task->status === 'Incomplete' ? 'checked' : '' }}>
-                                                <label for="taskStatusIncomplete">
+                                                    value="incomplete" id="incomplete"
+                                                    {{ $task->status === 'incomplete' ? 'checked' : '' }}>
+                                                <label for="incomplete">
                                                     <span class="radio-text">incomplete</span>
                                                 </label>
                                             </div>
 
                                             <div class="radio-theme-default custom-radio ">
                                                 <input name="status" class="radio" type="radio"
-                                                    value="taskStatusComplete" id="taskStatusComplete"
-                                                    {{ $task->status === 'Complete' ? 'checked' : '' }}>
-                                                <label for="taskStatusComplete">
+                                                    value="complete" id="complete"
+                                                    {{ $task->status === 'complete' ? 'checked' : '' }}>
+                                                <label for="complete">
                                                     <span class="radio-text">complete</span>
                                                 </label>
                                             </div>

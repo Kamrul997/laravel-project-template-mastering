@@ -96,12 +96,12 @@
                 <div class="edit-profile__body">
                    <div class="form-group mb-25">
                       <label for="">Email Address</label>
-                      <input type="email" class="form-control" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                      <input type="email" value="kamrul@gmail.com" class="form-control" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                    </div>
                    <div class="form-group mb-15">
                       <label for="password-field">password</label>
                       <div class="position-relative">
-                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
+                         <input id="password" value="123456789" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
                          <div class="uil uil-eye-slash text-lighten fs-15 field-icon toggle-password2">
                          </div>
                       </div>
@@ -123,14 +123,14 @@
                 </div>
              </div><!-- End: .card-body -->
             </form>
-             <div class="admin-topbar">
+             {{-- <div class="admin-topbar">
                 <p class="mb-0">
                    Don't have an account?
                    <a href="{{ route('register') }}" class="color-primary">
                       Sign up
                    </a>
                 </p>
-             </div><!-- End: .admin-topbar  -->
+             </div><!-- End: .admin-topbar  --> --}}
           </div><!-- End: .card -->
        </div><!-- End: .edit-profile -->
     </div><!-- End: .col-xl-5 -->

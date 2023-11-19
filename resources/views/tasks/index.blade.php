@@ -78,7 +78,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="userDatatable-content--subject">
+                                    <div class="userDatatable-content--subject text-capitalize">
                                         {{ $task->assign_to }}
                                     </div>
                                 </td>
@@ -88,7 +88,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="userDatatable-content--priority">
+                                    <div class="userDatatable-content--priority text-capitalize">
                                         {{ $task->status }}
                                     </div>
                                 </td>
@@ -105,7 +105,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#" class="remove">
+                                            <a href="{{ route('task.delete', $task->id) }}" class="remove">
                                                 <i class="uil uil-trash-alt"></i>
                                             </a>
                                         </li>

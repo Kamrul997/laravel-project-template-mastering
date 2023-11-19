@@ -48,7 +48,7 @@
                                     </div>
                                     <div>
                                         <h6>{{ Auth::user()->name }}</h6>
-                                        <span>Software Engineer</span>
+                                        <span class="text-capitalize">{{ Auth::user()->user_type }}</span>
                                     </div>
                                 </div>
                                 <div class="nav-author__options">

@@ -33,25 +33,19 @@
                                     <label for="taskName">name</label>
                                     <input type="text" class="form-control" name="taskName" id="taskName"
                                         value="{{ old('taskName') }}">
-                                    @error('taskName')
-                                        <p><span><small class="text-danger">{{ $message }}</small></span></p>
-                                    @enderror
                                 </div>
 
                                 <div class="form-group mb-25">
                                     <label for="name3">Task Details</label>
                                     <input type="text" class="form-control" value="{{ old('taskDetails') }}"
                                         name="taskDetails" id="taskDetails">
-                                    @error('taskDetails')
-                                        <p><span><small class="text-danger">{{ $message }}</small></span></p>
-                                    @enderror
                                 </div>
                                 <div class="form-group mb-25">
-                                    <label for="taskAddignTo" class="il-gray fs-14 fw-500 align-center mb-10">Assign
+                                    <label for="taskAssignTo" class="il-gray fs-14 fw-500 align-center mb-10">Assign
                                         To</label>
-                                    <select class="form-control px-15" id="taskAddignTo">
+                                    <select class="form-control px-15" name="taskAssignTo" id="taskAssignTo">
                                         @foreach ($users as $user)
-                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                            <option value="{{ $user->name }}">{{ $user->name }}</option>
                                         @endforeach
                                     </select>
                                  </div>
@@ -60,10 +54,6 @@
                                     <div class="position-relative">
                                         <input type="date" class="form-control" value="{{ old('assignDate') }}"
                                             name="assignDate" id="assignDate">
-
-                                        @error('assignDate')
-                                            <p><span><small class="text-danger">{{ $message }}</small></span></p>
-                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group mb-25 status-radio">
@@ -72,38 +62,28 @@
                                         <div class="radio-horizontal-list d-flex flex-wrap">
                                             <div class="radio-theme-default custom-radio ">
                                                 <input name="status" class="radio" type="radio"
-                                                    value="taskStatusIncomplete" id="taskStatusIncomplete"
-                                                    {{ old('status') == 'taskStatusIncomplete' ? 'checked' : '' }}>
-                                                <label for="taskStatusIncomplete">
+                                                    value="incomplete" id="incomplete"
+                                                    {{ old('status') == 'incomplete' ? 'checked' : '' }}>
+                                                <label for="incomplete">
                                                     <span class="radio-text">Incomplete</span>
                                                 </label>
                                             </div>
 
                                             <div class="radio-theme-default custom-radio ">
                                                 <input name="status" class="radio" type="radio"
-                                                    value="taskStatusComplete" id="taskStatusComplete"
-                                                    {{ old('status') == 'taskStatusComplete' ? 'checked' : '' }}>
-                                                <label for="taskStatusComplete">
+                                                    value="complete" id="complete"
+                                                    {{ old('status') == 'complete' ? 'checked' : '' }}>
+                                                <label for="complete">
                                                     <span class="radio-text">complete</span>
                                                 </label>
                                             </div>
-                                            @error('status')
-                                                <p><span><small class="text-danger">{{ $message }}</small></span></p>
-                                            @enderror
                                         </div>
                                     </div>
                                 </div>
                                 <div class="button-group d-flex pt-25 justify-content-md-end justify-content-start">
-
-
                                     <button
                                         class="btn btn-primary btn-default btn-squared text-capitalize radius-md shadow2 btn-sm">Submit
                                     </button>
-
-
-
-
-
                                 </div>
                             </form>
                         </div>

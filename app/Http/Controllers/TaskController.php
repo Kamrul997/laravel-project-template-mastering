@@ -22,15 +22,42 @@ class TaskController extends Controller
 
     public function store(TaskRequest $request){
 
+        $task = new Task();
+
+        $task->name = $request->taskName;
+        $task->details = $request->taskDetails;
+        $task->assign_to = $request->taskAssignTo;
+        $task->assign_date = $request->assignDate;
+        $task->status = $request->status;
+
+        $task->save();
 
         return redirect(route('task.index'));
     }
 
     public function edit(Task $taskId){
-        return view('tasks.edit', ['task' => $taskId]);
+        $users = User::all();
+        return view('tasks.edit', ['task' => $taskId], compact('users'));
     }
 
-    public function update(){
+    public function update(TaskRequest $request){
 
+
+        $task = Task::find($request->taskId);
+
+        $task->name = $request->taskName;
+        $task->details = $request->taskDetails;
+        $task->assign_to = $request->taskAssignTo;
+        $task->assign_date = $request->assignDate;
+        $task->status = $request->status;
+
+        // dd($task);
+        $task->save();
+        return redirect(route('task.index'));
+    }
+
+    public function delete(Task $taskId){
+        $taskId->delete();
+        return redirect(route('task.index'));
     }
 }
