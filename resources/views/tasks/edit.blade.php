@@ -29,23 +29,49 @@
                                 @if (Auth::user()->user_type === 'super admin' || Auth::user()->user_type === 'admin')
                                     <div class="form-group mb-25">
                                         <input type="text" class="form-control" value="{{ $task->id }}"
-                                            name="taskId" id="taskId" hidden>
+                                        name="taskId" id="taskId" hidden>
                                     </div>
                                     <div class="form-group mb-25">
-                                        <label for="taskName">name</label>
+                                        <label for="taskName">task name</label>
                                         <input type="text" class="form-control" id="taskName" name="taskName"
-                                            value="{{ $task->name }}">
+                                        value="{{ $task->name }}">
                                     </div>
 
                                     <div class="form-group mb-25">
-                                        <label for="name3">Task Details</label>
+                                        <label for="taskDetails">Task Details</label>
                                         <input type="text" class="form-control" name="taskDetails" id="taskDetails"
                                             value="{{ $task->details }}">
+                                    </div>
+                                    {{-- {{ dd($data['subTasks']->isNotEmpty());  }} --}}
+                                    <div class="form-group mb-25">
+                                        <label for="subTaskName">Sub Task name</label>
+                                        @if ($data['subTasks']->isNotEmpty())
+                                        @foreach ($data['subTasks'] as $subTask)
+                                                <input type="text" class="form-control" id="subTaskName" name="subTaskName"
+                                                value="{{  $subTask->sub_task_title }}">
+                                            @endforeach
+                                        @else
+                                            <input type="text" class="form-control" id="subTaskName" name="subTaskName"
+                                            value="">
+                                        @endif
+                                    </div>
+                                    <div class="form-group mb-25">
+                                        <label for="subTaskDetails">Sub Task Details</label>
+
+                                            @if ($data['subTasks']->isNotEmpty())
+                                            @foreach ($data['subTasks'] as $subTask)
+                                                    <input type="text" class="form-control" name="subTaskDetails" id="subTaskDetails"
+                                                    value="{{  $subTask->sub_task_details }}">
+                                                @endforeach
+                                            @else
+                                                <input type="text" class="form-control" name="subTaskDetails" id="subTaskDetails"
+                                                value="">
+                                            @endif
                                     </div>
                                     <div class="form-group mb-25">
                                         <label for="taskAddignTo">Assign To</label>
                                         <select class="form-control px-15" name="taskAssignTo" id="taskAssignTo">
-                                            @foreach ($users as $user)
+                                            @foreach ($data['users'] as $user)
                                                 <option value="{{ $user->name }}">{{ $user->name }}</option>
                                             @endforeach
                                         </select>

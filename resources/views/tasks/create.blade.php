@@ -30,16 +30,29 @@
 
 
                                 <div class="form-group mb-25">
-                                    <label for="taskName">name</label>
+                                    <label for="taskName">Task Name</label>
                                     <input type="text" class="form-control" name="taskName" id="taskName"
                                         value="{{ old('taskName') }}">
                                 </div>
 
                                 <div class="form-group mb-25">
-                                    <label for="name3">Task Details</label>
+                                    <label for="taskDetails">Task Details</label>
                                     <input type="text" class="form-control" value="{{ old('taskDetails') }}"
                                         name="taskDetails" id="taskDetails">
                                 </div>
+
+                                <div class="form-group mb-25">
+                                    <label for="subTaskName">Sub Task name</label>
+                                    <input type="text" class="form-control" name="subTaskName" id="subTaskName"
+                                        value="{{ old('subTaskName') }}">
+                                </div>
+
+                                <div class="form-group mb-25">
+                                    <label for="subTaskDetails">Sub Task Details</label>
+                                    <input type="text" class="form-control" value="{{ old('subTaskDetails') }}"
+                                        name="subTaskDetails" id="subTaskDetails">
+                                </div>
+
                                 <div class="form-group mb-25">
                                     <label for="taskAssignTo" class="il-gray fs-14 fw-500 align-center mb-10">Assign
                                         To</label>

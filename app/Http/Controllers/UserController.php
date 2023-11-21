@@ -14,7 +14,7 @@ class UserController extends Controller
 
         if(Auth::user()->user_type === 'super admin' || Auth::user()->user_type === 'admin'){
 
-            $users = User::all();
+            $users = User::paginate(2);
 
             return view('users.index', compact('users'));
         }else{

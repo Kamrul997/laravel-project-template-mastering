@@ -39,10 +39,16 @@
                                     <span class="userDatatable-title">ID</span>
                                 </th>
                                 <th>
-                                    <span class="userDatatable-title">Name</span>
+                                    <span class="userDatatable-title">Task</span>
                                 </th>
                                 <th>
                                     <span class="userDatatable-title">Details</span>
+                                </th>
+                                <th>
+                                    <span class="userDatatable-title">Subtask</span>
+                                </th>
+                                <th>
+                                    <span class="userDatatable-title">Subtask Details</span>
                                 </th>
                                 <th>
                                     <span class="userDatatable-title">Assign To</span>
@@ -59,7 +65,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($tasks as $task)
+                            @foreach ($allTaskAndSubtask as $task)
 
                             <tr>
                                 <td>{{ $task->id }}</td>
@@ -75,6 +81,26 @@
                                 <td>
                                     <div class="userDatatable-content--subject">
                                         {{ $task->details }}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex">
+                                        <div class="userDatatable-inline-title">
+                                            <a href="#" class="text-dark fw-500">
+                                                <h6>
+                                                    @foreach ( $task->subtasks as $subTask )
+                                                    {{ $subTask->sub_task_title }}
+                                                    @endforeach
+                                                </h6>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="userDatatable-content--subject">
+                                        @foreach ( $task->subtasks as $subTask )
+                                            {{ $subTask->sub_task_details }}
+                                        @endforeach
                                     </div>
                                 </td>
                                 <td>
@@ -119,8 +145,8 @@
                     </table>
                 </div>
                 <div class="d-flex justify-content-end pt-30">
-
-                    <nav class="dm-page ">
+                    {{ $allTaskAndSubtask->links() }}
+                    {{-- <nav class="dm-page ">
                         <ul class="dm-pagination d-flex">
                             <li class="dm-pagination__item">
                                 <a href="#" class="dm-pagination__link pagination-control"><span
@@ -147,7 +173,7 @@
                                 </div>
                             </li>
                         </ul>
-                    </nav>
+                    </nav> --}}
 
 
                 </div>
@@ -155,34 +181,5 @@
         </div>
     </div>
 
-    {{-- <div class="d-flex justify-content-end pt-30">
-
-       <nav class="dm-page ">
-          <ul class="dm-pagination d-flex">
-             <li class="dm-pagination__item">
-                <a href="#" class="dm-pagination__link pagination-control"><span class="la la-angle-left"></span></a>
-                <a href="#" class="dm-pagination__link"><span class="page-number">1</span></a>
-                <a href="#" class="dm-pagination__link active"><span class="page-number">2</span></a>
-                <a href="#" class="dm-pagination__link"><span class="page-number">3</span></a>
-                <a href="#" class="dm-pagination__link pagination-control"><span class="page-number">...</span></a>
-                <a href="#" class="dm-pagination__link"><span class="page-number">12</span></a>
-                <a href="#" class="dm-pagination__link pagination-control"><span class="la la-angle-right"></span></a>
-                <a href="#" class="dm-pagination__option">
-                </a>
-             </li>
-             <li class="dm-pagination__item">
-                <div class="paging-option">
-                   <select name="page-number" class="page-selection">
-                      <option value="20">20/page</option>
-                      <option value="40">40/page</option>
-                      <option value="60">60/page</option>
-                   </select>
-                </div>
-             </li>
-          </ul>
-       </nav>
-
-
-    </div> --}}
     </div>
 @endsection

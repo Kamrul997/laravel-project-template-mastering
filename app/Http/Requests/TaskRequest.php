@@ -21,8 +21,9 @@ class TaskRequest extends FormRequest
      */
     public function rules(): array
     {
+        // dd('ok');
         return [
-            'taskName' => 'required|string|max:255',
+            'taskName' => 'required|string',
             'taskDetails' => 'required|string',
             'taskAssignTo' => 'required|string',
             'assignDate' => 'required|date',

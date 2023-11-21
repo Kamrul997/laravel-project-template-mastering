@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
 
+    //all user route
     Route::get('/', [TaskController::class, 'index'])->name('dashboard');
     Route::get('/users', [UserController::class, 'index'])->name('user.index');
     Route::get('/user/edit/{userId}', [UserController::class, 'edit'])->name('user.edit');
@@ -30,6 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
     Route::post('/user/update', [UserController::class, 'update'])->name('user.update');
 
+    //all task route
     Route::get('/tasks', [TaskController::class, 'index'])->name('task.index');
     Route::get('/task/create', [TaskController::class, 'create'])->name('task.create');
     Route::get('/task/edit/{taskId}', [TaskController::class, 'edit'])->name('task.edit');
@@ -37,5 +39,3 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/task/update', [TaskController::class, 'update'])->name('task.update');
     Route::post('/task/store', [TaskController::class, 'store'])->name('task.store');
 });
-
-// Route::get('/home', [HomeController::class, 'index'])->name('home');

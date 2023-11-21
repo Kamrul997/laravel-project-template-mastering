@@ -12,4 +12,14 @@ class Task extends Model
     use SoftDeletes;
 
     protected $table = 'tasks';
+
+    // public function subtasks() {
+    //     return $this->hasMany(SubTask::class, 'sub_task_parent_id');
+    // }
+
+    public function subtasks()
+    {
+        return $this->hasMany(SubTask::class, 'sub_task_parent_id');
+    }
+
 }
